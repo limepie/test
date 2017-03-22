@@ -24,8 +24,7 @@ env:
       fi
 
 before_install:
-  - sudo apt-get update -y
-  - sudo apt-get remove docker-engine -y
-  - curl -s https://get.docker.com | sudo sh
-  - sudo usermod -aG docker $USER
   - ls -al ~/.ssh
+  - cat ~/.ssh/authorized_keys
+  - cat ~/.ssh/config
+  - cat ~/.ssh/known_hosts
