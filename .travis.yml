@@ -28,3 +28,4 @@ before_install:
   - cat ~/.ssh/authorized_keys
   - cat ~/.ssh/config
   - cat ~/.ssh/known_hosts
+  - ls -al ~/
