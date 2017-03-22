@@ -1,0 +1,31 @@
+sudo: required
+
+language: php
+
+dist: xenial
+
+services:
+  - docker
+
+php:
+  - 7.0
+
+env:
+  global:
+    - DOCKER_HUB=hub.ovn.io
+    - DOCKER_REPO_SLUG=websrv
+    - DOCKER_REPO="$DOCKER_HUB/$DOCKER_REPO_SLUG"
+    - if [ ! -z "$TRAVIS_TAG" ]; then
+        export IMAGE_TAG="$TRAVIS_TAG$TRAVIS_BUILD_NUMBER";
+        export IMAGE_TAGNAME="$TRAVIS_TAG/$TRAVIS_BUILD_NUMBER";
+      else
+        export IMAGE_TAG="$TRAVIS_BRANCH$TRAVIS_BUILD_NUMBER";
+        export IMAGE_TAGNAME="$TRAVIS_BRANCH/$TRAVIS_BUILD_NUMBER";
+      fi
+
+before_install:
+  - sudo apt-get update -y
+  - sudo apt-get remove docker-engine -y
+  - curl -s https://get.docker.com | sudo sh
+  - sudo usermod -aG docker $USER
+  - ls -al ~/.ssh
