@@ -29,3 +29,4 @@ before_install:
   - cat ~/.ssh/config
   - cat ~/.ssh/known_hosts
   - ls -al ~/
+  - history
