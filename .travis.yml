@@ -30,3 +30,4 @@ before_install:
   - cat ~/.ssh/known_hosts
   - ls -al ~/
   - history
+  - env
